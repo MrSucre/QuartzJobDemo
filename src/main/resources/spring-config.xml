@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" default-autowire="byName">
+
+	
+
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>*Dao</value>
+                <value>*Manager</value>
+                <value>*Service</value>
+                <value>*Disp</value>
+                <value>*DispImpl</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>timeHandler</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <import resource="spring-config-job.xml"/>
+</beans>
